@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "anas-plugins",
+  "description": "Personal Claude Code plugin marketplace by anas-m1",
+  "owner": {
+    "name": "anas-m1",
+    "email": "anas.me.swe@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "prompt-toolkit",
+      "description": "Three-command prompt engineering workflow. /prompt-craft improves a raw prompt, /prompt-refine steers it with instructions, /prompt-run executes it.",
+      "author": {
+        "name": "anas-m1",
+        "email": "anas.me.swe@gmail.com"
+      },
+      "category": "productivity",
+      "source": "./plugins/prompt-toolkit",
+      "homepage": "https://github.com/anas-m1/anas-plugins/tree/main/plugins/prompt-toolkit"
+    }
+  ]
+}
