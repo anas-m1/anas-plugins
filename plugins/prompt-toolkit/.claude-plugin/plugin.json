@@ -7,5 +7,6 @@
     "email": "anas.me.swe@gmail.com"
   },
   "category": "productivity",
-  "homepage": "https://github.com/anas-m1/anas-plugins/tree/main/plugins/prompt-toolkit"
+  "homepage": "https://github.com/anas-m1/anas-plugins/tree/main/plugins/prompt-toolkit",
+  "skills": ["prompt-craft", "prompt-refine", "prompt-run"]
 }
