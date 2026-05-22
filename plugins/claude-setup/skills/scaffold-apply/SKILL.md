@@ -18,34 +18,32 @@ Find the most recent block bounded by `**SCAFFOLD DRAFT**` and `**END SCAFFOLD D
 
 ### Step 2 — Safety check
 
-Before creating files, list which files already exist using Bash (`ls -la CLAUDE.md .claude/settings.json .mcp.json .memory/.config.json 2>/dev/null`).
+Before creating files, list which files already exist using Bash:
+```
+ls -la CLAUDE.md .mcp.json .claude/settings.json .claude/stack.md .claude/architecture.md .claude/memory/MEMORY.md .claude/memory/.config.json 2>/dev/null
+```
 
 If any file already exists, list them and ask the user to confirm overwrite before continuing. Wait for confirmation — do not proceed if any target file already exists without explicit user approval.
 
 ### Step 3 — Create files
 
-Parse each `--- FILE: {path} ---` ... `--- END FILE ---` section from the draft and write its content to disk:
+Parse each `--- FILE: {path} ---` ... `--- END FILE ---` section from the draft and write its content to disk. First, create all required directories:
 
-1. **`CLAUDE.md`** — use the Write tool to create it at the project root.
+```bash
+mkdir -p .claude/memory
+```
 
-2. **`.claude/settings.json`** — use Bash to create the `.claude/` directory if it does not exist (`mkdir -p .claude`), then use the Write tool to write `.claude/settings.json`.
+Then write each file using the Write tool:
 
-3. **`.mcp.json`** — use the Write tool to create it at the project root.
+1. **`CLAUDE.md`** — project root.
+2. **`.claude/stack.md`** — tech stack and commands reference.
+3. **`.claude/architecture.md`** — layout, patterns, conventions, guardrails.
+4. **`.claude/memory/MEMORY.md`** — memory index.
+5. **`.claude/settings.json`** — permissions and hooks.
+6. **`.mcp.json`** — project root.
+7. **`.claude/memory/.config.json`** — memory-drive config.
 
-4. **`.memory/` structure** — use Bash to create directories:
-   ```
-   mkdir -p .memory/decisions .memory/context .memory/notes
-   ```
-   Then write `.memory/.config.json` from the draft content.
-   Then create `.memory/index.md` with this content (fill in project name and date):
-   ```markdown
-   # Memory Index — {project-name}
-
-   | Date | Category | Title | File |
-   |------|----------|-------|------|
-   ```
-
-5. **Google Drive index** — use `mcp__claude_ai_Google_Drive__create_file` to create `claude-memory-{project-name}-index.md` in Drive with the same index content. If authentication is needed, call `mcp__claude_ai_Google_Drive__authenticate` first. If Drive is unavailable, skip this step and note it — the user can run `/memory-init` later.
+After writing files, attempt to create a Google Drive index using `mcp__claude_ai_Google_Drive__create_file` (authenticate first if needed). If Drive is unavailable, skip and note it.
 
 ### Step 4 — Add to .gitignore
 
@@ -53,9 +51,8 @@ Check if `.gitignore` exists. If it does, append these lines if not already pres
 ```
 .env
 .env.*
-.memory/
 ```
-If `.gitignore` doesn't exist, create it with those three lines.
+If `.gitignore` doesn't exist, create it with those two lines.
 
 ### Step 5 — Confirm
 
@@ -66,16 +63,19 @@ Project scaffold applied for: {project-name}
 
 Created:
   ✓ CLAUDE.md
+  ✓ .claude/stack.md
+  ✓ .claude/architecture.md
+  ✓ .claude/memory/MEMORY.md
   ✓ .claude/settings.json
   ✓ .mcp.json
-  ✓ .memory/ (decisions/, context/, notes/, .config.json, index.md)
-  ✓ .memory/ folder created in Google Drive  [or: skipped — run /memory-init to set up Drive]
+  ✓ .claude/memory/.config.json
   ✓ .gitignore updated
+  ✓ Google Drive index created  [or: skipped — Drive unavailable]
 
 Next steps:
-  1. Review CLAUDE.md and fill in any placeholders
-  2. Set env vars referenced in .mcp.json (e.g. GITHUB_TOKEN)
-  3. Use /memory-draft → /memory-save to persist key decisions as you work
+  1. Fill in placeholder values in .claude/stack.md and .claude/architecture.md
+  2. Set env vars referenced in .mcp.json (e.g. GITHUB_TOKEN, DATABASE_URL)
+  3. Run /project-init to scaffold the actual project directory structure
 ```
 
 Stop here. Do not ask follow-up questions. This skill is now complete — return to normal assistant behavior for all subsequent messages.

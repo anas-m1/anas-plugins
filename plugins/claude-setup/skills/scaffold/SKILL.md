@@ -173,6 +173,18 @@ Project: {project-name} | Stack: {stack summary}
 {full content}
 --- END FILE ---
 
+--- FILE: .claude/stack.md ---
+{full content}
+--- END FILE ---
+
+--- FILE: .claude/architecture.md ---
+{full content}
+--- END FILE ---
+
+--- FILE: .claude/memory/MEMORY.md ---
+{full content}
+--- END FILE ---
+
 --- FILE: .claude/settings.json ---
 {full content}
 --- END FILE ---
@@ -181,7 +193,7 @@ Project: {project-name} | Stack: {stack summary}
 {full content}
 --- END FILE ---
 
---- FILE: .memory/.config.json ---
+--- FILE: .claude/memory/.config.json ---
 {full content}
 --- END FILE ---
 **END SCAFFOLD DRAFT**
