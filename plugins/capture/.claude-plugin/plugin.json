@@ -1,0 +1,12 @@
+{
+  "name": "capture",
+  "version": "1.0.0",
+  "description": "Save context or instructions to the project's .memory/ folder with a preview-and-confirm step. /capture drafts the change, /capture-refine adjusts it, /capture-apply writes it.",
+  "author": {
+    "name": "anas-m1",
+    "email": "anas.me.swe@gmail.com"
+  },
+  "category": "productivity",
+  "keywords": ["memory", "context", "capture", "productivity", "workflow"],
+  "homepage": "https://github.com/anas-m1/anas-plugins/tree/main/plugins/capture"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "claude-setup",
+  "version": "1.0.0",
+  "description": "Scaffold a new project with CLAUDE.md, .claude/settings.json, .mcp.json, and .memory/ in one workflow. /scaffold drafts everything, /scaffold-refine adjusts, /scaffold-apply creates all files.",
+  "author": {
+    "name": "anas-m1",
+    "email": "anas.me.swe@gmail.com"
+  },
+  "category": "productivity",
+  "keywords": ["scaffold", "setup", "claude-md", "mcp", "settings", "productivity"],
+  "homepage": "https://github.com/anas-m1/anas-plugins/tree/main/plugins/claude-setup"
+}

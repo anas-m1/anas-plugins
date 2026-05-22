@@ -1,0 +1,12 @@
+{
+  "name": "memory-drive",
+  "version": "1.0.0",
+  "description": "Persist project memory to Google Drive. Draft, refine, and commit memory entries from conversation or files. Load and search memory across sessions.",
+  "author": {
+    "name": "anas-m1",
+    "email": "anas.me.swe@gmail.com"
+  },
+  "category": "productivity",
+  "keywords": ["memory", "google-drive", "persistence", "context", "workflow"],
+  "homepage": "https://github.com/anas-m1/anas-plugins/tree/main/plugins/memory-drive"
+}

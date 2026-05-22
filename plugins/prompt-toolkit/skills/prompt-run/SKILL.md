@@ -1,6 +1,7 @@
 ---
 name: prompt-run
 description: Execute the most recently crafted or refined prompt. Use when the user invokes /prompt-run to run the last improved prompt.
+version: 1.0.0
 disable-model-invocation: true
 ---
 

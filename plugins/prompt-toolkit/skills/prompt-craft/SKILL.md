@@ -1,6 +1,7 @@
 ---
 name: prompt-craft
 description: Improve a raw prompt and output the refined version. Use when the user invokes /prompt-craft with a prompt they want improved.
+version: 1.0.0
 argument-hint: <your-raw-prompt>
 disable-model-invocation: true
 ---

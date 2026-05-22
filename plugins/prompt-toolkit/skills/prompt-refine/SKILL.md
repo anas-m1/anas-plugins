@@ -1,6 +1,7 @@
 ---
 name: prompt-refine
 description: Refine the most recently crafted prompt using the user's instructions. Use when the user invokes /prompt-refine with steering or improvement instructions.
+version: 1.0.0
 argument-hint: <your-instructions>
 disable-model-invocation: true
 ---
