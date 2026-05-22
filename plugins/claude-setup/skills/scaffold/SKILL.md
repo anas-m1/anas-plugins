@@ -30,14 +30,31 @@ $ARGUMENTS
 
 Generate the content for four files, tailored to the detected stack:
 
-**A. `CLAUDE.md`** — fill in every section with project-specific content:
+**A. `CLAUDE.md`** — a concise root file that uses `@` includes to pull in sub-documents from `.claude/`. Keep `CLAUDE.md` itself short; the detail lives in the referenced files.
 
 ```markdown
 # {Project Name}
 
-## Project
 {One paragraph: what it does, who it's for, key constraints or non-goals.}
 
+## Memory
+
+@.claude/memory/MEMORY.md
+
+## Stack & Commands
+
+@.claude/stack.md
+
+## Architecture & Conventions
+
+@.claude/architecture.md
+```
+
+Then generate the referenced sub-documents:
+
+**`.claude/stack.md`** — tech stack and commands:
+
+```markdown
 ## Tech Stack
 {List: language + version, framework, DB, key libraries, package manager}
 
@@ -47,11 +64,17 @@ Generate the content for four files, tailored to the detected stack:
 - Lint: `{command}`
 - Build/check: `{command}`
 - DB migrations (if applicable): `{command}`
+```
 
-## Architecture
+**`.claude/architecture.md`** — layout, patterns, conventions, and guardrails:
+
+```markdown
+## Repository Layout
 - `{dir}/` — {purpose}
 - {repeat for each key directory}
-- Key pattern: {e.g. "all DB access via repository layer", "API routes in src/routes/"}
+
+## Key Patterns
+- {e.g. "all DB access via repository layer", "API routes in src/routes/"}
 
 ## Conventions
 - {naming conventions, component structure, error handling pattern}
@@ -63,6 +86,15 @@ Generate the content for four files, tailored to the detected stack:
 - Edit migration files directly — always generate new ones
 - Skip writing tests for new features
 - {add any stack-specific cautions}
+```
+
+**`.claude/memory/MEMORY.md`** — empty index to start:
+
+```markdown
+# Memory Index — {project-name}
+
+| Date | Category | Title | File |
+|------|----------|-------|------|
 ```
 
 **B. `.claude/settings.json`** — permissions pre-approved for the stack, plus a lint hook:
@@ -119,7 +151,7 @@ Add a filesystem server if the project reads/writes lots of local files outside 
 Omit Google Drive — that's handled by the built-in claude.ai MCP.
 Only include servers that are actually useful for this project.
 
-**D. `.memory/.config.json`** — memory-drive configuration:
+**E. `.claude/memory/.config.json`** — memory-drive configuration:
 
 ```json
 {
